@@ -1,0 +1,86 @@
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .main-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .title-bold {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 0px;
+  }
+  .weather-data {
+    display: flex;
+    flex-direction: column;
+  }
+  .data-ubold {
+    font-size: 40px;
+    font-weight: bolder;
+    margin-bottom: 0px;
+  }
+  .data-bold {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0px;
+  }
+  .data-bold1 {
+    margin-top: 8px;
+    color: gray;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  .other-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: 1px solid black;
+  }
+  .other-data div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+input[type="text"] {
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid black;
+  padding: 8px 2px;
+}
+input[type="text"]:focus {
+  outline: none;
+}
+button {
+  background: black;
+  color: white;
+  border: none;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.App-logo {
+  animation: App-logo-spin infinite 5s linear;
+  height: 80px;
+}
+.title-light {
+  color: gray;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
