@@ -11,8 +11,7 @@ class Design extends Component {
     description: "",
     wind: "",
     humidity: "",
-    pressure: "",
-    clouds: ""
+    pressure: ""
   };
   componentDidMount() {
     if (navigator.geolocation) {
@@ -30,8 +29,7 @@ class Design extends Component {
               description: data.weather[0].main,
               wind: data.wind.speed,
               humidity: data.main.humidity,
-              pressure: data.main.pressure,
-              clouds: data.clouds.all
+              pressure: data.main.pressure
             });
           });
       });
@@ -70,7 +68,7 @@ class Design extends Component {
     return (
       <div className="container">
         <div className="navbar">
-          <div>
+          <div className="logo">
             <img className="App-logo" src={logo} alt="Logo" />
           </div>
           <div>
@@ -83,7 +81,7 @@ class Design extends Component {
                 value={this.state.city}
                 placeholder="City Name / Pincode"
               />
-              <button type="submit">FIND</button>
+              <button type="submit">Find</button>
             </form>
           </div>
         </div>
@@ -98,10 +96,6 @@ class Design extends Component {
               <h4 className="data-bold1">{this.state.description}</h4>
             </div>
             <div className="other-data">
-              <div>
-                <p className="title-light">Clouds</p>
-                <p className="data-bold">{this.state.clouds} %</p>
-              </div>
               <div>
                 <p className="title-light">Wind</p>
                 <p className="data-bold">{this.state.wind} m/s</p>
