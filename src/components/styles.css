@@ -3,13 +3,21 @@
     padding: 8px 16px;
     display: flex;
     flex-direction: column;
-    min-height: 98vh;
+    min-height: 96vh;
+    color: white;
     justify-content: space-between;
+  }
+  p {
+    margin: 0;
   }
   .logo {
     width: 56px;
     height: 56px;
     text-align: center;
+  }
+  .indicator {
+    width: 24px;
+    height: 24px;
   }
 
   .navbar {
@@ -21,19 +29,35 @@
     display: flex;
     flex-direction: column;
   }
-  .title-bold {
-    font-size: 36px;
-    font-weight: bold;
+  .city-name {
+    font-size: 32px;
+    font-weight: normal;
     margin-bottom: 0px;
   }
-  .weather-data {
+  .date {
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 4px;
+    opacity: 0.8;
+  }
+  .weather-temp {
+    font-size: 56px;
+    font-stretch: narrower;
+  }
+  .weather-desc {
+    margin-left: 4px;
+    font-size: 36px;
+  }
+  .weather-data div {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
   }
   .data-ubold {
-    font-size: 48px;
-    font-weight: bold;
-    margin-bottom: 0px;
+    font-size: 40px;
+    font-weight: 500;
+    margin: 0px;
   }
   .data-bold {
     font-size: 16px;
@@ -49,14 +73,30 @@
   .other-data {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    border-top: 1px solid black;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
   }
-  .other-data div {
+
+  .other-data .item {
     display: flex;
     flex-direction: column;
+    flex-basis: 30%;
+    flex-grow: 1;
     justify-content: center;
     align-items: center;
+    margin: 6px;
+    background-color: gray;
+  }
+  .d-inline {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  hr {
+    margin: 0 4px;
+    width: 100%;
+    height: 0.5px;
   }
 }
 input[type="text"] {
@@ -64,7 +104,8 @@ input[type="text"] {
   border: none;
   border-bottom: 2px solid rgb(73, 146, 175);
   padding: 8px 2px;
-  font-family: "Roboto Mono", monospace;
+  background: transparent;
+  color: white;
 }
 input[type="text"]:focus {
   outline: none;
@@ -76,16 +117,13 @@ button {
   padding: 8px;
   font-size: 14px;
   font-weight: bold;
-  font-family: "Roboto Mono", monospace;
 }
 .App-logo {
   animation: App-logo-spin infinite 5s linear;
   height: 56px;
   width: 56px;
 }
-.title-light {
-  color: gray;
-}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

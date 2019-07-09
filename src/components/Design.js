@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./styles.css";
 import axios from "axios";
 import logo from "../logo.svg";
+import night from "../moon.svg";
 const api_key = "208990df1dbbe8f38d20e0a14d7b4329";
 class Design extends Component {
   state = {
@@ -85,29 +86,40 @@ class Design extends Component {
             </form>
           </div>
         </div>
-        <div className="main-content">
+        <div>
+          <p className="city-name">{this.state.name}</p>
+          <p className="date">Sunday, 7 July</p>
+        </div>
+        <div className="weather-data">
           <div>
-            <h2 className="title-bold">{this.state.name}</h2>
-            <p className="title-light">Sunday, 7 July</p>
+            <img src={night} alt="Night" className="indicator" />
+            <p className="weather-desc">{this.state.description}</p>
           </div>
-          <div className="weather-data">
-            <div className="weather-report">
-              <h1 className="data-ubold">{this.state.degree}°</h1>
-              <h4 className="data-bold1">{this.state.description}</h4>
+          <div>
+            <p className="weather-temp">{this.state.degree}°</p>
+            <div>
+              <p>Min Temp</p>
+              <p>Max Temp</p>
             </div>
-            <div className="other-data">
-              <div>
-                <p className="title-light">Wind</p>
-                <p className="data-bold">{this.state.wind} m/s</p>
-              </div>
-              <div>
-                <p className="title-light">Humidity</p>
-                <p className="data-bold">{this.state.humidity} %</p>
-              </div>
-              <div>
-                <p className="title-light">Pressure</p>
-                <p className="data-bold">{this.state.pressure} hPa</p>
-              </div>
+          </div>
+        </div>
+        <div className="weather-details">
+          <div className="d-inline">
+            <p>Details</p>
+            <hr />
+          </div>
+          <div className="other-data">
+            <div className="item">
+              <p className="title-light">Wind</p>
+              <p className="data-bold">{this.state.wind} m/s</p>
+            </div>
+            <div className="item">
+              <p className="title-light">Humidity</p>
+              <p className="data-bold">{this.state.humidity} %</p>
+            </div>
+            <div className="item">
+              <p className="title-light">Pressure</p>
+              <p className="data-bold">{this.state.pressure} hPa</p>
             </div>
           </div>
         </div>
