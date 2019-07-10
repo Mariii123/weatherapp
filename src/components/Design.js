@@ -3,7 +3,9 @@ import "./styles.css";
 import axios from "axios";
 import logo from "../logo.svg";
 import night from "../moon.svg";
+
 const api_key = "208990df1dbbe8f38d20e0a14d7b4329";
+
 class Design extends Component {
   state = {
     city: "",
@@ -30,6 +32,8 @@ class Design extends Component {
               description: data.weather[0].main,
               wind: data.wind.speed,
               humidity: data.main.humidity,
+              minTemp: Math.round(data.main.temp_min - 273.15),
+              maxTemp: Math.round(data.main.temp_max - 273.15),
               pressure: data.main.pressure
             });
           });
@@ -60,6 +64,8 @@ class Design extends Component {
             wind: data.wind.speed,
             humidity: data.main.humidity,
             pressure: data.main.pressure,
+            minTemp: Math.round(data.main.temp_min - 273.15),
+            maxTemp: Math.round(data.main.temp_max - 273.15),
             clouds: data.clouds.all
           });
         });
@@ -67,7 +73,7 @@ class Design extends Component {
   };
   render() {
     return (
-      <div className="container">
+      <div className="container day-bg">
         <div className="navbar">
           <div className="logo">
             <img className="App-logo" src={logo} alt="Logo" />
@@ -91,35 +97,26 @@ class Design extends Component {
           <p className="date">Sunday, 7 July</p>
         </div>
         <div className="weather-data">
+          <p className="weather-temp">{this.state.degree}°</p>
           <div>
-            <img src={night} alt="Night" className="indicator" />
+            <img src={night} alt="Night" className="icon" />
             <p className="weather-desc">{this.state.description}</p>
           </div>
-          <div>
-            <p className="weather-temp">{this.state.degree}°</p>
-            <div>
-              <p>Min Temp</p>
-              <p>Max Temp</p>
-            </div>
-          </div>
-        </div>
-        <div className="weather-details">
-          <div className="d-inline">
-            <p>Details</p>
-            <hr />
-          </div>
           <div className="other-data">
-            <div className="item">
+            <div className="card">
               <p className="title-light">Wind</p>
-              <p className="data-bold">{this.state.wind} m/s</p>
+              <p className="data-value">{this.state.wind}</p>
+              <p className="data-unit">m/s</p>
             </div>
-            <div className="item">
+            <div className="card">
               <p className="title-light">Humidity</p>
-              <p className="data-bold">{this.state.humidity} %</p>
+              <p className="data-value">{this.state.humidity}</p>
+              <p className="data-unit">%</p>
             </div>
-            <div className="item">
+            <div className="card">
               <p className="title-light">Pressure</p>
-              <p className="data-bold">{this.state.pressure} hPa</p>
+              <p className="data-value">{this.state.pressure}</p>
+              <p className="data-unit">hPa</p>
             </div>
           </div>
         </div>

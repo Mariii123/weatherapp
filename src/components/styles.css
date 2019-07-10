@@ -1,9 +1,112 @@
+.container {
+  padding: 16px 36px;
+  display: flex;
+
+  flex-direction: column;
+  min-height: 100%;
+  color: white;
+  justify-content: space-between;
+}
+p {
+  margin: 0;
+}
+.logo {
+  width: 96px;
+  height: 96px;
+  text-align: center;
+}
+.icon {
+  width: 36px;
+  height: 36 px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-content {
+  display: flex;
+  flex-direction: column;
+}
+.city-name {
+  font-size: 32px;
+  font-weight: normal;
+  margin-bottom: 0px;
+}
+.date {
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+.weather-temp {
+  font-size: 64px;
+  font-weight: 100;
+}
+.weather-data div {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+}
+
+div .min-max-temp {
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+}
+.min-max-temp p {
+  padding: 8px;
+}
+.min-max-temp p:nth-child(1) {
+  border-bottom: 1px solid gray;
+}
+.weather-desc {
+  margin-left: 4px;
+  font-size: 36px;
+}
+
+.data-ubold {
+  font-size: 40px;
+  font-weight: 500;
+  margin: 0px;
+}
+.data-bold {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 0px;
+}
+.data-bold1 {
+  margin-top: 8px;
+  color: gray;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.other-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.other-data .card {
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.d-inline {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 @media screen and (max-width: 768px) {
   .container {
-    padding: 8px 16px;
+    padding: 0px 16px;
     display: flex;
     flex-direction: column;
-    min-height: 96vh;
+    min-height: 100vh;
     color: white;
     justify-content: space-between;
   }
@@ -15,9 +118,24 @@
     height: 56px;
     text-align: center;
   }
-  .indicator {
-    width: 24px;
-    height: 24px;
+  .title-light {
+    opacity: 0.6;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+  .data-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 6px;
+  }
+  .data-unit {
+    font-size: 12px;
+    font-weight: bolder;
+  }
+  .icon {
+    width: 16px;
+    height: 16px;
   }
 
   .navbar {
@@ -41,19 +159,32 @@
     opacity: 0.8;
   }
   .weather-temp {
-    font-size: 56px;
-    font-stretch: narrower;
-  }
-  .weather-desc {
-    margin-left: 4px;
-    font-size: 36px;
+    font-size: 64px;
+    font-weight: 100;
   }
   .weather-data div {
     display: flex;
     flex-direction: row;
-    align-content: center;
-    align-items: center;
   }
+
+  div .min-max-temp {
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+  }
+  .min-max-temp p {
+    padding: 8px;
+  }
+  .min-max-temp p:nth-child(1) {
+    border-bottom: 1px solid gray;
+  }
+  .weather-desc {
+    margin-left: 4px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: bold;
+  }
+
   .data-ubold {
     font-size: 40px;
     font-weight: 500;
@@ -73,19 +204,15 @@
   .other-data {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    flex-grow: 1;
+    border-top: 1px solid whitesmoke;
+    margin-top: 24px;
+    padding-top: 16px;
   }
 
-  .other-data .item {
+  .other-data .card {
     display: flex;
     flex-direction: column;
-    flex-basis: 30%;
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
-    margin: 6px;
-    background-color: gray;
   }
   .d-inline {
     display: flex;
@@ -98,13 +225,21 @@
     width: 100%;
     height: 0.5px;
   }
+  .App-logo {
+    animation: App-logo-spin infinite 5s linear;
+    height: 56px !important;
+    width: 56px !important;
+  }
 }
 input[type="text"] {
   font-size: 16px;
   border: none;
-  border-bottom: 2px solid rgb(73, 146, 175);
+  border-bottom: 2px solid WHITE;
   padding: 8px 2px;
   background: transparent;
+  color: white;
+}
+input[type="text"]::placeholder {
   color: white;
 }
 input[type="text"]:focus {
@@ -120,8 +255,8 @@ button {
 }
 .App-logo {
   animation: App-logo-spin infinite 5s linear;
-  height: 56px;
-  width: 56px;
+  height: 96px;
+  width: 96px;
 }
 
 @keyframes App-logo-spin {
@@ -131,4 +266,49 @@ button {
   to {
     transform: rotate(360deg);
   }
+}
+.clear-bg {
+  background: linear-gradient(to bottom right, #1f6ab5, #2f7bc1, #cbe2f2 150%);
+}
+.hot-bg {
+  background: linear-gradient(to bottom right, #5e145b, #df140a, #ea5a14 150%);
+}
+.rain-bg {
+  background: linear-gradient(
+    to bottom right,
+    #00031b 16%,
+    #000187 59%,
+    #0103a2 90%,
+    #1810ff 95%
+  );
+}
+.storm-bg {
+  background: linear-gradient(
+    to bottom right,
+    #252a5c 1%,
+    #4b3a5f 35%,
+    #976562 74%,
+    #908b93 150%
+  );
+}
+
+.night-bg {
+  background: linear-gradient(
+    to bottom right,
+    #000741 43%,
+    #000370 61%,
+    #00829a 110%
+  );
+}
+
+.day-bg {
+  background: linear-gradient(
+    to bottom right,
+    #0c003d 0%,
+    #3f0098 3%,
+    #f60419 50%,
+    #ff4900 69%,
+    #ff7d01 90%,
+    #fffe01 110%
+  );
 }
