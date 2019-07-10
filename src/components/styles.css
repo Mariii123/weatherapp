@@ -1,48 +1,74 @@
-.container {
-  padding: 16px 36px;
-  display: flex;
-
-  flex-direction: column;
-  min-height: 100%;
+.main-container {
+  width: 100vw;
+  min-height: 100vh;
   color: white;
-  justify-content: space-between;
+}
+.container {
+  min-height: calc(100vh - 112px);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 p {
   margin: 0;
 }
+.fa-plus {
+  font-size: 28px;
+}
 .logo {
-  width: 96px;
-  height: 96px;
-  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.logo .fa-bolt {
+  font-size: 24px;
 }
 .icon {
-  width: 36px;
-  height: 36 px;
+  width: 24px;
+  height: 24px;
 }
 
 .navbar {
+  padding: 24px 0px;
+  width: 85%;
+  height: 64px;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .main-content {
   display: flex;
   flex-direction: column;
 }
+.city-date-container {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: 0 auto 48px;
+}
 .city-name {
-  font-size: 32px;
-  font-weight: normal;
+  font-size: 40px;
   margin-bottom: 0px;
 }
 .date {
-  font-size: 14px;
-  font-weight: 700;
-  margin-top: 4px;
-  opacity: 0.8;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 16px;
 }
 .weather-temp {
   font-size: 64px;
-  font-weight: 100;
+  font-weight: bolder;
+}
+.weather-data {
+  display: flex;
+  flex-direction: row;
+}
+.weather-data > div {
+  width: 85%;
+  margin: auto;
 }
 .weather-data div {
   display: flex;
@@ -51,20 +77,11 @@ p {
   align-items: center;
 }
 
-div .min-max-temp {
-  display: flex;
-  flex-direction: column;
-  margin-left: 16px;
-}
-.min-max-temp p {
-  padding: 8px;
-}
-.min-max-temp p:nth-child(1) {
-  border-bottom: 1px solid gray;
-}
 .weather-desc {
-  margin-left: 4px;
-  font-size: 36px;
+  margin-left: 8px;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
 .data-ubold {
@@ -86,14 +103,19 @@ div .min-max-temp {
 .other-data {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  padding-left: 48px;
 }
-
 .other-data .card {
-  padding: 8px;
-  border-radius: 8px;
+  padding: 8px 24px;
+  border-right: thin solid whitesmoke;
+  border-spacing: 16px;
   display: flex;
   flex-direction: column;
+}
+.fa-arrow-right {
+  padding: 8px 24px;
+  font-size: 24px;
+  font-weight: normal;
 }
 .d-inline {
   display: flex;
@@ -101,13 +123,38 @@ div .min-max-temp {
   justify-content: center;
   align-items: center;
 }
+.title-light {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+.data-value {
+  font-size: 24px;
+  font-weight: bolder;
+  margin-bottom: 4px;
+}
+.data-unit {
+  font-size: 16px;
+  font-weight: bolder;
+}
 @media screen and (max-width: 768px) {
+  .main-container {
+    width: 100vw;
+    min-height: 100vh;
+  }
   .container {
-    padding: 0px 16px;
+    width: 90%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     color: white;
+    justify-content: space-between;
+  }
+  .container-body {
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
   }
   p {
@@ -232,10 +279,9 @@ div .min-max-temp {
   }
 }
 input[type="text"] {
-  font-size: 16px;
+  font-size: 40px;
   border: none;
-  border-bottom: 2px solid WHITE;
-  padding: 8px 2px;
+  padding: 8px 0px;
   background: transparent;
   color: white;
 }
@@ -246,7 +292,7 @@ input[type="text"]:focus {
   outline: none;
 }
 button {
-  background: rgb(73, 146, 175);
+  background: transparent;
   color: white;
   border: none;
   padding: 8px;
@@ -304,7 +350,6 @@ button {
 .day-bg {
   background: linear-gradient(
     to bottom right,
-    #0c003d 0%,
     #3f0098 3%,
     #f60419 50%,
     #ff4900 69%,
