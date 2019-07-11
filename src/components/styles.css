@@ -53,10 +53,20 @@ p {
   font-size: 40px;
   margin-bottom: 0px;
 }
-.date {
+
+.date-time {
+  display: flex;
+  font-size: 20px;
+}
+.date,
+.time {
   font-size: 18px;
   font-weight: bold;
-  margin-top: 16px;
+  margin-top: 8px;
+  letter-spacing: 1px;
+}
+.time {
+  margin-left: 8px;
 }
 .weather-temp {
   font-size: 64px;
@@ -73,12 +83,9 @@ p {
 .weather-data div {
   display: flex;
   flex-direction: row;
-  align-content: center;
-  align-items: center;
 }
 
 .weather-desc {
-  margin-left: 8px;
   font-size: 24px;
   font-weight: bold;
   letter-spacing: 2px;
@@ -110,6 +117,7 @@ p {
   border-right: thin solid whitesmoke;
   border-spacing: 16px;
   display: flex;
+  flex: 1;
   flex-direction: column;
 }
 .fa-arrow-right {
@@ -138,146 +146,6 @@ p {
   font-size: 16px;
   font-weight: bolder;
 }
-@media screen and (max-width: 768px) {
-  .main-container {
-    width: 100vw;
-    min-height: 100vh;
-  }
-  .container {
-    width: 90%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    color: white;
-    justify-content: space-between;
-  }
-  .container-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  p {
-    margin: 0;
-  }
-  .logo {
-    width: 56px;
-    height: 56px;
-    text-align: center;
-  }
-  .title-light {
-    opacity: 0.6;
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 6px;
-  }
-  .data-value {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 6px;
-  }
-  .data-unit {
-    font-size: 12px;
-    font-weight: bolder;
-  }
-  .icon {
-    width: 16px;
-    height: 16px;
-  }
-
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .main-content {
-    display: flex;
-    flex-direction: column;
-  }
-  .city-name {
-    font-size: 32px;
-    font-weight: normal;
-    margin-bottom: 0px;
-  }
-  .date {
-    font-size: 14px;
-    font-weight: 700;
-    margin-top: 4px;
-    opacity: 0.8;
-  }
-  .weather-temp {
-    font-size: 64px;
-    font-weight: 100;
-  }
-  .weather-data div {
-    display: flex;
-    flex-direction: row;
-  }
-
-  div .min-max-temp {
-    display: flex;
-    flex-direction: column;
-    margin-left: 16px;
-  }
-  .min-max-temp p {
-    padding: 8px;
-  }
-  .min-max-temp p:nth-child(1) {
-    border-bottom: 1px solid gray;
-  }
-  .weather-desc {
-    margin-left: 4px;
-    font-size: 16px;
-    letter-spacing: 1px;
-    font-weight: bold;
-  }
-
-  .data-ubold {
-    font-size: 40px;
-    font-weight: 500;
-    margin: 0px;
-  }
-  .data-bold {
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 0px;
-  }
-  .data-bold1 {
-    margin-top: 8px;
-    color: gray;
-    font-size: 18px;
-    text-transform: uppercase;
-  }
-  .other-data {
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    border-top: 1px solid whitesmoke;
-    margin-top: 24px;
-    padding-top: 16px;
-  }
-
-  .other-data .card {
-    display: flex;
-    flex-direction: column;
-  }
-  .d-inline {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-  hr {
-    margin: 0 4px;
-    width: 100%;
-    height: 0.5px;
-  }
-  .App-logo {
-    animation: App-logo-spin infinite 5s linear;
-    height: 56px !important;
-    width: 56px !important;
-  }
-}
 input[type="text"] {
   font-size: 40px;
   border: none;
@@ -299,12 +167,24 @@ button {
   font-size: 14px;
   font-weight: bold;
 }
+.date-time {
+  display: flex;
+}
+.date,
+.time {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 8px;
+  letter-spacing: 1px;
+}
+.time {
+  margin-left: 8px;
+}
 .App-logo {
   animation: App-logo-spin infinite 5s linear;
   height: 96px;
   width: 96px;
 }
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -356,4 +236,131 @@ button {
     #ff7d01 90%,
     #fffe01 110%
   );
+}
+
+@media screen and (max-width: 640px) {
+  .main-container {
+    width: 100vw;
+    min-height: 100vh;
+    color: white;
+  }
+  .container {
+    min-height: calc(100vh - 96px);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .navbar {
+    padding: 16px 0px;
+    width: 95%;
+    height: 64px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .city-date-container {
+    width: 95%;
+    margin: auto;
+  }
+  .data-value {
+    font-size: 24px;
+    font-weight: bolder;
+    margin-bottom: 4px;
+  }
+  .data-unit {
+    font-size: 16px;
+    font-weight: bolder;
+  }
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+  .city-name {
+    font-size: 32px;
+    font-weight: normal;
+    margin-bottom: 0px;
+  }
+  .weather-temp {
+    font-size: 48px;
+    font-weight: bolder;
+  }
+
+  .weather-data {
+    display: flex;
+    flex-direction: column;
+  }
+  .weather-data > div {
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .weather-desc {
+    margin-left: 4px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: bold;
+  }
+
+  .data-ubold {
+    font-size: 40px;
+    font-weight: 500;
+    margin: 0px;
+  }
+  .data-bold {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0px;
+  }
+  .data-bold1 {
+    margin-top: 8px;
+    color: gray;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  .other-data {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    padding: 0px;
+  }
+
+  .other-data .card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 24px;
+    border: none;
+    border-left: 1px solid white;
+    justify-content: flex-start;
+  }
+  .other-data .card:nth-child(1) {
+    padding-right: 24px;
+    padding-left: 0px;
+    border: none;
+  }
+  .inline {
+    display: flex;
+    flex-direction: row;
+  }
+  .App-logo {
+    animation: App-logo-spin infinite 5s linear;
+    height: 56px !important;
+    width: 56px !important;
+  }
+  input[type="text"] {
+    font-size: 28px;
+    max-width: 250px;
+    border: none;
+    padding: 8px 0px;
+    background: transparent;
+    color: white;
+  }
 }

@@ -4,6 +4,12 @@ import axios from "axios";
 import logo from "../logo.svg";
 import night from "../moon.svg";
 import rain from "../rain.svg";
+import hurricane from "../hurricane.svg";
+import clouds from "../clouds.svg";
+import blizzard from "../blizzard.svg";
+import cloudy from "../cloudy-day.svg";
+
+import dateFormat from "dateformat";
 const api_key = "208990df1dbbe8f38d20e0a14d7b4329";
 
 class Design extends Component {
@@ -14,7 +20,9 @@ class Design extends Component {
     description: "",
     wind: "",
     humidity: "",
-    pressure: ""
+    pressure: "",
+    wid: "",
+    wic: ""
   };
   componentDidMount() {
     console.log(this.props);
@@ -27,10 +35,13 @@ class Design extends Component {
           )
           .then(res => {
             var { data } = res;
+            console.log(data);
             this.setState({
               city: data.name,
               degree: Math.round(data.main.temp - 273.15),
               description: data.weather[0].main,
+              wid: data.weather[0].id,
+              wic: data.weather[0].icon,
               wind: data.wind.speed,
               humidity: data.main.humidity,
               minTemp: Math.round(data.main.temp_min - 273.15),
@@ -61,7 +72,9 @@ class Design extends Component {
             city: data.name,
             degree: Math.round(data.main.temp - 273.15),
             description: data.weather[0].main,
+            wid: data.weather[0].id,
             wind: data.wind.speed,
+            wic: data.weather[0].icon,
             humidity: data.main.humidity,
             pressure: data.main.pressure,
             minTemp: Math.round(data.main.temp_min - 273.15),
@@ -72,14 +85,23 @@ class Design extends Component {
     }
   };
   render() {
+    var now = new Date();
     var img = undefined;
-    if (this.state.description == "Drizzle") {
+    var bg = undefined;
+    console.log(this.state);
+    if (this.state.wid === 721) {
+      img = hurricane;
+      bg = "clear-bg";
+    } else if (this.state.wic === "09d") {
       img = rain;
-    } else {
-      img = night;
+      bg = "rain-bg";
+    } else if (this.state.wic === "13d") {
+      img = blizzard;
+    } else if (this.state.wid === 800) {
+      img = cloudy;
     }
     return (
-      <div className="main-container day-bg">
+      <div className={`main-container ${bg}`}>
         <div className="navbar">
           <div>
             <p className="logo">
@@ -99,7 +121,13 @@ class Design extends Component {
               />
               <button className="fa fa-arrow-right" type="submit" />
             </form>
-            <p className="date">Sunday, 7 July</p>
+            <div className="date-time">
+              <p className="date">{dateFormat(now, "ddd,dS mmmm ")}</p>
+              <p className="time">
+                {dateFormat(now, "HH:MM")}
+                {}
+              </p>
+            </div>
           </div>
 
           <div className="weather-data">
@@ -107,7 +135,7 @@ class Design extends Component {
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <p className="weather-temp">{this.state.degree}°C</p>
                 <div>
-                  <img src={img} alt="Night" className="icon" />
+                  <img src={img} alt="Icon" className="icon" />
                   <p className="weather-desc">{this.state.description}</p>
                 </div>
               </div>
