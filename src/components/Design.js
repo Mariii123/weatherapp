@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import "./styles.css";
 import axios from "axios";
-import logo from "../logo.svg";
 import night from "../moon.svg";
 import rain from "../rain.svg";
 import hurricane from "../hurricane.svg";
 import clouds from "../clouds.svg";
 import blizzard from "../blizzard.svg";
 import cloudy from "../cloudy-day.svg";
-
+import clear from "../Clear.svg";
 import dateFormat from "dateformat";
+import smoke from "../Smoke.svg";
+import thunder from "../storm.svg";
+import dateformat from "dateformat";
 const api_key = "208990df1dbbe8f38d20e0a14d7b4329";
 
 class Design extends Component {
@@ -25,7 +27,6 @@ class Design extends Component {
     wic: ""
   };
   componentDidMount() {
-    console.log(this.props);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         var { latitude, longitude } = position.coords;
@@ -35,7 +36,6 @@ class Design extends Component {
           )
           .then(res => {
             var { data } = res;
-            console.log(data);
             this.setState({
               city: data.name,
               degree: Math.round(data.main.temp - 273.15),
@@ -48,8 +48,13 @@ class Design extends Component {
               maxTemp: Math.round(data.main.temp_max - 273.15),
               pressure: data.main.pressure
             });
+          })
+          .catch(err => {
+            alert("Unable to detect your current location");
           });
       });
+    } else {
+      alert("You need to enable gps to access the location");
     }
   }
   handleChange = e => {
@@ -81,6 +86,9 @@ class Design extends Component {
             maxTemp: Math.round(data.main.temp_max - 273.15),
             clouds: data.clouds.all
           });
+        })
+        .catch(err => {
+          alert("Please check whether you have entered correct city name");
         });
     }
   };
@@ -88,17 +96,34 @@ class Design extends Component {
     var now = new Date();
     var img = undefined;
     var bg = undefined;
-    console.log(this.state);
-    if (this.state.wid === 721) {
-      img = hurricane;
+    if (this.state.description === "Haze") {
+      img = smoke;
       bg = "clear-bg";
-    } else if (this.state.wic === "09d") {
-      img = rain;
-      bg = "rain-bg";
     } else if (this.state.wic === "13d") {
       img = blizzard;
-    } else if (this.state.wid === 800) {
+    } else if (this.state.description === "Clouds") {
       img = cloudy;
+      bg = "cloudy-bg";
+    } else if (this.state.description === "Clear") {
+      img = clear;
+      bg = "Clean-bg";
+    } else if (
+      this.state.description === "Thunder" ||
+      this.state.description === "Storm"
+    ) {
+      img = thunder;
+      bg = "Clean-bg";
+    } else if (
+      this.state.description === "Fog" ||
+      this.state.description === "Smoke" ||
+      this.state.description === "Mist"
+    ) {
+      img = smoke;
+    } else if (this.state.description === "Rain") {
+      img = rain;
+      bg = "rain-bg";
+    } else {
+      bg = "day-bg";
     }
     return (
       <div className={`main-container ${bg}`}>
@@ -108,7 +133,6 @@ class Design extends Component {
               <i className="fa fa-bolt" /> weather
             </p>
           </div>
-          <i className="fa fa-plus" />
         </div>
         <div className="container">
           <div className="city-date-container">
