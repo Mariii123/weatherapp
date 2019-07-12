@@ -24,9 +24,11 @@ class Design extends Component {
     humidity: "",
     pressure: "",
     wid: "",
-    wic: ""
+    wic: "",
+    loading: true,
+    lastLoc: ""
   };
-  componentDidMount() {
+  getCurrentLocWeather = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         var { latitude, longitude } = position.coords;
@@ -46,7 +48,9 @@ class Design extends Component {
               humidity: data.main.humidity,
               minTemp: Math.round(data.main.temp_min - 273.15),
               maxTemp: Math.round(data.main.temp_max - 273.15),
-              pressure: data.main.pressure
+              pressure: data.main.pressure,
+              loading: false,
+              lastLoc: data.name
             });
           })
           .catch(err => {
@@ -54,18 +58,27 @@ class Design extends Component {
           });
       });
     } else {
+      this.setState({
+        city: this.state.lastLoc
+      });
       alert("You need to enable gps to access the location");
     }
+  };
+  componentDidMount() {
+    this.getCurrentLocWeather();
   }
+
   handleChange = e => {
     this.setState({
       city: e.target.value
     });
   };
   handleSubmit = async e => {
+    this.setState({
+      loading: true
+    });
     e.preventDefault();
     var city = this.state.city;
-
     if (city) {
       axios
         .get(
@@ -84,15 +97,28 @@ class Design extends Component {
             pressure: data.main.pressure,
             minTemp: Math.round(data.main.temp_min - 273.15),
             maxTemp: Math.round(data.main.temp_max - 273.15),
-            clouds: data.clouds.all
+            clouds: data.clouds.all,
+            loading: false,
+            lastLoc: data.name
           });
         })
         .catch(err => {
+          this.setState({
+            loading: false,
+            city: this.state.lastLoc
+          });
           alert("Please check whether you have entered correct city name");
         });
     }
   };
   render() {
+    if (this.state.loading) {
+      return (
+        <div className="main-container clear-bg center">
+          <p>Loading...</p>
+        </div>
+      );
+    }
     var now = new Date();
     var img = undefined;
     var bg = undefined;
