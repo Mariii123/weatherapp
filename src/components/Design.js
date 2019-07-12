@@ -31,7 +31,7 @@ class Design extends Component {
         var { latitude, longitude } = position.coords;
         axios
           .get(
-            `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${api_key}`
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${api_key}`
           )
           .then(res => {
             var { data } = res;
@@ -64,7 +64,7 @@ class Design extends Component {
     if (city) {
       axios
         .get(
-          `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`
         )
         .then(res => {
           const { data } = res;
