@@ -69,7 +69,7 @@ class Design extends Component {
 
   handleChange = e => {
     this.setState({
-      city: e.target.value
+      name: e.target.value
     });
   };
   handleSubmit = async e => {
@@ -77,7 +77,7 @@ class Design extends Component {
       loading: true
     });
     e.preventDefault();
-    var city = this.state.city;
+    var city = this.state.name;
     if (city) {
       axios
         .get(
