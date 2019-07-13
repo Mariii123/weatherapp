@@ -3,7 +3,6 @@
   position: relative;
   width: 64px;
   height: 64px;
-  
 }
 .lds-ellipsis div {
   position: absolute;
@@ -60,7 +59,7 @@
   min-height: 100vh;
   color: white;
 }
-.main-container>div{
+.main-container > div {
   background-color: rgba(0, 0, 0, 0.5);
 }
 .container {
@@ -72,9 +71,6 @@
 }
 p {
   margin: 0;
-}
-.fa-plus {
-  font-size: 28px;
 }
 .logo {
   font-size: 18px;
@@ -162,7 +158,7 @@ p {
   font-weight: 500;
   margin: 0px;
 }
-.hidden{
+.hidden {
   display: none;
 }
 .data-bold {
@@ -216,8 +212,10 @@ p {
   font-weight: bolder;
 }
 input[type="text"] {
-  font-size: 40px;
+  font-size: 18px;
+  letter-spacing: 1px;
   border: none;
+  border-bottom: 1px solid #fff;
   padding: 8px 0px;
   background: transparent;
   color: white;
@@ -262,65 +260,73 @@ button {
     transform: rotate(360deg);
   }
 }
-.fog-bg{
-  background-image: url('../fog-bg.jpg');
+.fog-bg {
+  background-image: url("../fog-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
-.haze-bg{
-  background-image: url('../haze-bg.jpg');
+.haze-bg {
+  background-image: url("../haze-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
-.snow-bg{
-  background-image: url('../snow-bg.jpg');
+.snow-bg {
+  background-image: url("../snow-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 .cloudy-bg {
-  background-image: url('../cloudy-bg.jpg');
+  background-image: url("../cloudy-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 .clearday-bg {
-  background-image: url('../clearday-bg.jpg');
+  background-image: url("../clearday-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 .clearnight-bg {
-  background-image: url('../clearnight-bg.jpg');
+  background-image: url("../clearnight-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 .rain-bg {
-  background-image: url('../rain-bg.jpg') ;
+  background-image: url("../rain-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 .thunder-bg {
-  background-image: url('../thunder-bg.jpg');
+  background-image: url("../thunder-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
-.drizzle-bg{
-  background-image: url('../drizzle-bg.jpg');
+.drizzle-bg {
+  background-image: url("../drizzle-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .cloudynight-bg {
-  background-image: url('../cloudynight-bg.jpg');
+  background-image: url("../cloudynight-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .default-bg {
-  background-image: url('../default-bg.jpg');
+  background-image: url("../default-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 @media screen and (max-width: 640px) {
+  .logo {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  .logo .fa-bolt {
+    font-size: 16px;
+  }
   .main-container {
     width: 100vw;
     min-height: 100vh;
@@ -332,6 +338,11 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+  .fa-arrow-right {
+    padding: 4px 8px;
+    font-size: 18px;
+    font-weight: normal;
   }
   .navbar {
     padding: 16px 0px;
@@ -438,10 +449,13 @@ button {
     width: 56px !important;
   }
   input[type="text"] {
-    font-size: 28px;
-    max-width: 250px;
+    max-width: 150px;
+    font-size: 14px;
+
+    letter-spacing: 1px;
     border: none;
-    padding: 8px 0px;
+    border-bottom: 1px solid #fff;
+    padding: 4px 0px;
     background: transparent;
     color: white;
   }

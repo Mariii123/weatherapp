@@ -184,25 +184,29 @@ class Design extends Component {
                 <i className="fa fa-bolt" /> weather
               </p>
             </div>
-            <div className={`lds-ellipsis ${loader}`}>
-              <div />
-              <div />
-              <div />
-              <div />
-            </div>
+            <form onSubmit={this.handleSubmit} className="inline">
+              <input
+                type="text"
+                className="city-name"
+                onChange={this.handleChange}
+                placeholder="City/Pincode"
+                required
+              />
+              <button className="fa fa-arrow-right" type="submit" />
+            </form>
           </div>
           <div className="container">
             <div className="city-date-container">
-              <form onSubmit={this.handleSubmit} className="inline">
-                <input
-                  type="text"
-                  className="city-name"
-                  onChange={this.handleChange}
-                  value={this.state.city}
-                  autoFocus
-                />
-                <button className="fa fa-arrow-right" type="submit" />
-              </form>
+              <div className={`lds-ellipsis ${loader}`}>
+                <div />
+                <div />
+                <div />
+                <div />
+              </div>
+              <div>
+                <p className="city-name">{this.state.city}</p>
+              </div>
+
               <div className="date-time">
                 <p className="date">{dateFormat(now, "ddd,dS mmmm ")}</p>
                 <p className="time">
