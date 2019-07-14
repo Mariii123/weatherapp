@@ -53,7 +53,8 @@ class Design extends Component {
             });
           })
           .catch(err => {
-            alert("Unable to detect your current location");
+            console.log(err.code);
+            alert("Please enter valid city name or pincode");
           });
       });
     } else {
@@ -104,11 +105,12 @@ class Design extends Component {
           });
         })
         .catch(err => {
+          console.log(err.code);
           this.setState({
             loading: false,
             city: this.state.lastLoc
           });
-          alert("Please check whether you have entered correct city name");
+          alert("Please enter valid city name or pincode");
         });
     }
   };
